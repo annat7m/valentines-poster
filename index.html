@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Paint Party - IS Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FFF8F0;
+            --pink: #FFB4C8;
+            --red: #FF6B7A;
+            --peach: #FFD4B8;
+            --sage: #B8D4C8;
+            --charcoal: #4A4A4A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Karla', sans-serif;
+            background: linear-gradient(135deg, #FFE8E8 0%, #E8F4FF 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .poster {
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 3/4;
+            background: var(--cream);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            position: relative;
+            overflow: hidden;
+            padding: 48px 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Decorative elements */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.4;
+            filter: blur(60px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .blob-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--pink);
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 250px;
+            height: 250px;
+            background: var(--peach);
+            bottom: -80px;
+            left: -80px;
+            animation-delay: 2s;
+        }
+
+        .blob-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--sage);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(20px, -20px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        /* Content */
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .heart-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10% { transform: scale(1.1); }
+            20% { transform: scale(1); }
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            color: var(--red);
+            line-height: 1;
+            margin-bottom: 12px;
+            font-style: italic;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            font-weight: 400;
+            margin-bottom: 32px;
+            opacity: 0.8;
+        }
+
+        .highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+            width: 100%;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .highlight-item:hover {
+            transform: translateX(8px);
+        }
+
+        .icon {
+            font-size: 1.5rem;
+            min-width: 24px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .highlight-item:nth-child(1) .icon { animation-delay: 0s; }
+        .highlight-item:nth-child(2) .icon { animation-delay: 0.3s; }
+        .highlight-item:nth-child(3) .icon { animation-delay: 0.6s; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .highlight-text {
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            line-height: 1.5;
+        }
+
+        .details-box {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            margin-top: auto;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            color: var(--charcoal);
+        }
+
+        .detail-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-icon {
+            font-size: 1.2rem;
+        }
+
+        .detail-text {
+            font-weight: 500;
+        }
+
+        .cta {
+            margin-top: 20px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--red) 0%, var(--pink) 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Karla', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 16px rgba(255, 107, 122, 0.3);
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(255, 107, 122, 0.4);
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--charcoal);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 600px) {
+            .poster {
+                padding: 32px 24px;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .highlight-text {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+
+        <div class="content">
+            <svg class="heart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5C22 12.27 18.6 15.36 13.45 20.03L12 21.35Z" fill="#FF6B7A"/>
+            </svg>
+
+            <h1>Paint Party</h1>
+            <div class="subtitle">A Valentine's Celebration</div>
+
+            <div class="highlights">
+                <div class="highlight-item">
+                    <div class="icon">🎨</div>
+                    <div class="highlight-text">Create a cute painting for yourself, your partner, or anyone you love — all materials provided!</div>
+                </div>
+                <div class="highlight-item">
+                    <div class="icon">🍓</div>
+                    <div class="highlight-text">Indulge in Valentine's treats with mocktails and strawberries with whipped cream</div>
+                </div>
+                <div class="highlight-item">
+                    <div class="icon">✨</div>
+                    <div class="highlight-text">Relax and enjoy a lovely evening with friends before the semester gets busy</div>
+                </div>
+            </div>
+
+            <div class="details-box">
+                <div class="detail-row">
+                    <span class="detail-icon">📅</span>
+                    <span class="detail-text">Tuesday, February 10</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-icon">🕕</span>
+                    <span class="detail-text">6:00 - 7:00 PM</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-icon">📍</span>
+                    <span class="detail-text">Aucoin 221</span>
+                </div>
+
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSb5k1b0xseHjIXTTQvf0FgLLe6jhi2qSl9wMEbY_tAqW2jA/viewform" target="_blank" class="cta" style="text-decoration: none; display: inline-block;">RSVP Now</a>
+                
+                <div class="footer">Hosted by International Studies Club</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
