@@ -26,15 +26,17 @@
             background: linear-gradient(135deg, #FFE8E8 0%, #E8F4FF 100%);
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
             padding: 20px;
+            padding-top: 40px;
+            padding-bottom: 40px;
         }
 
         .poster {
             width: 100%;
             max-width: 600px;
-            aspect-ratio: 3/4;
+            min-height: auto;
             background: var(--cream);
             border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
@@ -233,8 +235,15 @@
         }
 
         @media (max-width: 600px) {
+            body {
+                padding: 16px;
+                padding-top: 24px;
+                padding-bottom: 24px;
+            }
+
             .poster {
                 padding: 32px 24px;
+                min-height: auto;
             }
 
             h1 {
@@ -247,6 +256,19 @@
 
             .highlight-text {
                 font-size: 0.9rem;
+            }
+
+            .heart-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .highlights {
+                gap: 12px;
+            }
+
+            .details-box {
+                padding: 20px;
             }
         }
     </style>
@@ -301,4 +323,4 @@
         </div>
     </div>
 </body>
-</html>
+</html>Ï
